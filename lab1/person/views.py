@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from django.conf import settings
 from rest_framework.reverse import reverse
 
+
 class PersonViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows various operations over persons.

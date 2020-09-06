@@ -4,6 +4,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from .models import Person
 
+
 class PersonTests(APITestCase):
     def test_create_person(self):
         """
@@ -66,7 +67,6 @@ class PersonTests(APITestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-
     def test_retrieve_person_list(self):
         """
         Ensure we can retrieve person objects list.
@@ -91,7 +91,6 @@ class PersonTests(APITestCase):
         self.assertEqual(response.data[1]['age'], 13)
         self.assertEqual(response.data[1]['address'], 'Test address')
         self.assertEqual(response.data[1]['work'], 'Test work')
-
 
     def test_delete_person(self):
         """
