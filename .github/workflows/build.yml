@@ -4,9 +4,24 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
     steps:
       - uses: actions/checkout@v2
-      # TODO build, test and deploy project
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Tests
+        run: |
+          python manage.py test
+      # TODO deploy project
       - name: Checkout test repository
         uses: actions/checkout@v2
         with:
