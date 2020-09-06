@@ -1,4 +1,5 @@
 from django.urls import reverse
+from django.conf import settings
 from rest_framework import status
 from rest_framework.test import APITestCase
 from .models import Person
@@ -16,6 +17,9 @@ class PersonTests(APITestCase):
                 }
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        url = reverse("person-concrete", kwargs={"pk": Person.objects.get().pk})
+        self.assertEqual(response.get('Location'),
+                         f'http://{settings.URL}{url}')
         self.assertEqual(Person.objects.count(), 1)
         self.assertEqual(Person.objects.get().name, 'Test name')
         self.assertEqual(Person.objects.get().age, 13)

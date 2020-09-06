@@ -1,6 +1,8 @@
 from .models import Person
 from .serializers import PersonSerializer
 from rest_framework import viewsets
+from django.conf import settings
+from rest_framework.reverse import reverse
 
 class PersonViewSet(viewsets.ModelViewSet):
     """
@@ -8,3 +10,7 @@ class PersonViewSet(viewsets.ModelViewSet):
     """
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
+
+    def get_success_headers(self, data):
+        url = reverse("person-concrete", kwargs={"pk": data["id"]})
+        return {'Location': f'http://{settings.URL}{url}'}
