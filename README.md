@@ -5,3 +5,7 @@
 * Python
 * Django
 * Django REST framework
+* SwaggerUI
+* GitHub actions
+* Heroku
+* django-heroku
