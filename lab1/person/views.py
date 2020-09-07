@@ -14,4 +14,4 @@ class PersonViewSet(viewsets.ModelViewSet):
 
     def get_success_headers(self, data):
         url = reverse("person-concrete", kwargs={"pk": data["id"]})
-        return {'Location': f'http://{settings.URL}{url}'}
+        return {'Location': f'https://{settings.URL}{url}'}

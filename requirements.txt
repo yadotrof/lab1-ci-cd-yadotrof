@@ -2,3 +2,5 @@ django
 djangorestframework
 pyyaml
 uritemplate
+django-heroku
+gunicorn

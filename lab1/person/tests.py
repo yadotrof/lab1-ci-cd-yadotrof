@@ -20,7 +20,7 @@ class PersonTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         url = reverse("person-concrete", kwargs={"pk": Person.objects.get().pk})
         self.assertEqual(response.get('Location'),
-                         f'http://{settings.URL}{url}')
+                         f'https://{settings.URL}{url}')
         self.assertEqual(Person.objects.count(), 1)
         self.assertEqual(Person.objects.get().name, 'Test name')
         self.assertEqual(Person.objects.get().age, 13)

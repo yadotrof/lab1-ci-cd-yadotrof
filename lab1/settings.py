@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'p&8$9ub+_wy^++y&a48ez$moyx8v@#_-6k0pta*f-6w7zxuq#1'
+SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -121,4 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-URL = '127.0.0.1'
+URL = 'shmarov-rsoi-lab1.herokuapp.com'
+
+# Activate Django-Heroku.
+django_heroku.settings(locals(), test_runner=False)
