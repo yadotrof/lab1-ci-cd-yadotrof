@@ -19,7 +19,7 @@ person_concrete = PersonViewSet.as_view({
 })
 
 urlpatterns = [
-    path('swagger-ui/', TemplateView.as_view(
+    path('swagger-ui', TemplateView.as_view(
         template_name='person/swagger.html',
         extra_context={'schema_url': 'openapi-schema'}
     ), name='swagger-ui'),
@@ -27,7 +27,7 @@ urlpatterns = [
                                     description="API for person",
                                     version="1.0.0"
                                     ), name='openapi-schema'),
-    path('persons/', person_all, name='person-all'),
-    path('persons/<int:pk>/', person_concrete, name='person-concrete'),
+    path('persons', person_all, name='person-all'),
+    path('persons/<int:pk>', person_concrete, name='person-concrete'),
     path('admin/', admin.site.urls),
 ]
